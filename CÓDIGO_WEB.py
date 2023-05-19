@@ -6,7 +6,7 @@ import pip
 pip.main(["install", "openpyxl"])# esta linea y la de arriba me ayudaron a poder ejecutarlo en streamlit, casi que no!
 
 
-import plotly.express as px #pip install plotly-express
+#import plotly.express as px #pip install plotly-express
 
 import datetime
 
@@ -14,7 +14,7 @@ import pickle
 from pathlib import Path
 
 import altair as alt
-import plotly.graph_objects as go
+#import plotly.graph_objects as go
 import streamlit_authenticator as stauth
 
 
@@ -75,7 +75,7 @@ st.dataframe(df1)
 
 st.divider()
 
-line_chart = px.line(x ='fecha', y = 'Precio Cierre', data_frame = df1, title = 'Linea de tendencia', markers = False)
+chart_data = pd.DataFrame(df1, x= 'fecha', y = 'Precio Cierre')
     
-st.write(line_chart)
+st.line_chart(chart_data)
 

@@ -53,7 +53,7 @@ df['EMA14'] = df['Precio Cierre'].ewm(span = 14,adjust = False).mean()
 df['EMA50'] = df['Precio Cierre'].ewm(span = 50,adjust = False).mean()
 df['EMA200'] = df['Precio Cierre'].ewm(span = 200,adjust = False).mean()
 
-elegir_columnas = ['Nemotecnico','fecha','Precio Cierre','EMA14','EMA50','EMA200']
+elegir_columnas = ['Nemotecnico','fecha','Precio Cierre','RSI','EMA14','EMA50','EMA200']
 
 df1 = df[elegir_columnas]
 

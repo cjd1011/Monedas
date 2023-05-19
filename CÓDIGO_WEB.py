@@ -75,9 +75,9 @@ st.dataframe(df1)
 
 st.divider()
 
-chart_data = pd.DataFrame(df1, columns = ['fecha','Precio Cierre'])
+#chart_data = pd.DataFrame(df1, columns = ['fecha','Precio Cierre'])
     
-st.line_chart(chart_data,x= 'fecha', y = 'Precio Cierre')
+#st.line_chart(chart_data,x= 'fecha', y = 'Precio Cierre')
 
 line_chart = px.line(x ='fecha', y = 'Precio Cierre', data_frame = df1, title = 'Linea de tendencia', markers = False)
     

@@ -51,5 +51,9 @@ df1 = df[elegir_columnas]
 
 st.title('Análisis del :blue[USD/COP] :bar_chart:')
 
+st.divider()
+
+st.slider("This is a slider", df['fecha'])
+
 st.dataframe(df1)
 

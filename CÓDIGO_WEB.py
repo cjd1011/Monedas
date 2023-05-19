@@ -75,7 +75,7 @@ st.dataframe(df1)
 
 st.divider()
 
-chart_data = pd.DataFrame(df1, x= 'fecha', y = 'Precio Cierre')
+chart_data = pd.DataFrame(df1, columns = ['fecha','Precio Cierre'])
     
-st.line_chart(chart_data)
+st.line_chart(chart_data,x= 'fecha', y = 'Precio Cierre')
 

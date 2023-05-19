@@ -85,7 +85,7 @@ st.divider()
 
 fig5 = px.line( x ='fecha', y = 'Precio Cierre', data_frame = df1, title = 'Linea de tendencia', markers = False)
 
-    fig5.update_xaxes(
+fig5.update_xaxes(
         rangeslider_visible=True,
         rangeselector=dict(
             buttons=list([
@@ -96,5 +96,5 @@ fig5 = px.line( x ='fecha', y = 'Precio Cierre', data_frame = df1, title = 'Line
                 dict(step="all")
             ])
         )
-    )
+)
 

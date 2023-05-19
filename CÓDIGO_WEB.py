@@ -49,6 +49,7 @@ df1 = df[elegir_columnas]
 
 #df.to_excel(Activo+" DONE"+".xlsx",index = False,sheet_name = "RESULTADO")
 
+st.title('Análisis del :blue[USD/COP] :bar_chart:')
+
 st.dataframe(df1)
 
-st.title('Análisis del _USD/COP_ :blue[colors] :bar_chart:')

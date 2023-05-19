@@ -97,4 +97,4 @@ fig5.update_xaxes(
             ])
         )
 )
-
+st.write(fig5)

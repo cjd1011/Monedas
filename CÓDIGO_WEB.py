@@ -3,6 +3,7 @@ import pandas as pd
 import altair as alt
 #from openpyxl import Workbook
 import pip
+
 pip.main(["install", "openpyxl"])# esta linea y la de arriba me ayudaron a poder ejecutarlo en streamlit, casi que no!
 
 n = 14
@@ -39,6 +40,10 @@ df['SMA200'] = df['Precio Cierre'].rolling(200).mean()
 df['EMA14'] = df['Precio Cierre'].ewm(span = 14,adjust = False).mean()
 df['EMA50'] = df['Precio Cierre'].ewm(span = 50,adjust = False).mean()
 df['EMA200'] = df['Precio Cierre'].ewm(span = 200,adjust = False).mean()
+
+elegir_columnas = ['Nemotecnico','fecha','Precio Cierre','EMA14','EMA50','EMA200']
+
+df1 = df[elegir_columnas]
 
 #df['Cap. Bursatil'] = df['Precio Cierre']*df['No. Acciones']
 

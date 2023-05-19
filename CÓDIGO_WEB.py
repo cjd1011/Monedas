@@ -10,7 +10,7 @@ n = 14
 
 Activo = "USD-COP"
 
-df = pd.read_excel("USD-COP DONE.xlsx")
+df = pd.read_excel("USD-COP.xlsx")
 
 df['Var'] = df["Precio Cierre"].diff()
 
@@ -60,4 +60,10 @@ st.divider()
 #st.slider("This is a slider", df['fecha'])
 
 st.dataframe(df1)
+
+st.divider()
+
+line_chart = px.line(x ='fecha', y = 'Precio Cierre', data_frame = df1, title = 'Linea de tendencia', markers = False)
+    
+st.write(line_chart)
 

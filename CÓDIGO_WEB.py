@@ -49,4 +49,4 @@ df1 = df[elegir_columnas]
 
 #df.to_excel(Activo+" DONE"+".xlsx",index = False,sheet_name = "RESULTADO")
 
-st.dataframe(df)
+st.dataframe(df1)

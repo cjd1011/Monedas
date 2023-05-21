@@ -65,11 +65,11 @@ df1.sort_values(by=['fecha'], ascending=True)
 
 st.title('Análisis del :blue[USD/COP] :bar_chart:')
 
-st.divider()
+#st.divider()
 
 st.subheader('Realizado por: Camilo Diaz:briefcase:')
 
-st.divider()
+#st.divider()
 
 #st.slider("This is a slider", df['fecha'])
 
@@ -93,7 +93,7 @@ df2 = df1.melt(id_vars=['Nemotecnico','fecha'],
 
 Activo = st.sidebar.multiselect(
         "Seleccione el Activo:",
-        options = df['Indicador'].unique(),
+        options = df2['Indicador'].unique(),
         #default = "USD/COP" #Aqui podría por default dejar un filtro especifico pero vamos a dejarlos todos puestos por default
     )
     

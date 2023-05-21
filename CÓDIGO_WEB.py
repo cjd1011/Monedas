@@ -57,6 +57,8 @@ elegir_columnas = ['Nemotecnico','fecha','Precio Cierre','RSI','EMA14','EMA50','
 
 df1 = df[elegir_columnas]
 
+df1.sort_values(by='fecha', ascending=False)
+
 #df['Cap. Bursatil'] = df['Precio Cierre']*df['No. Acciones']
 
 #df.to_excel(Activo+" DONE"+".xlsx",index = False,sheet_name = "RESULTADO")
@@ -83,11 +85,11 @@ st.divider()
     
 #st.write(line_chart)
 
-df1.melt(id_vars=['Nemotecnico','fecha'], 
+df2 = df1.melt(id_vars=['Nemotecnico','fecha'], 
         var_name="Indicador", 
         value_name="valor")
 
 #fig5 = px.line( x ='fecha', y = 'Precio Cierre', data_frame = df2, title = 'Linea de tendencia', color = 'Nemotecnico',markers = False)
 
 
-st.write(df1)
+st.write(df2)

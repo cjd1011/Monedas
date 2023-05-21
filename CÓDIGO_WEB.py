@@ -100,7 +100,7 @@ Activo = st.multiselect(
 df_seleccion = df2.query("Indicador == @Activo" ) #el primero es la columna y el segundo es el selector
 #st.dataframe(df_seleccion)
 
-fig1 = px.line( x='fecha', y='valor', title='Gráfica USD/COP', data_frame = df_seleccion, color = 'Indicador',use_container_width = True)
+fig1 = px.line( x='fecha', y='valor', title='Gráfica USD/COP', data_frame = df_seleccion, color = 'Indicador')
 
 
-st.write(fig1)
+st.write(fig1,use_container_width = True)

@@ -115,4 +115,4 @@ fig1.update_xaxes(
         )
 )
 
-#st.write(df2)
+st.write(fig5)

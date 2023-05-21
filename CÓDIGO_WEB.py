@@ -75,7 +75,7 @@ st.divider()
 
 st.dataframe(df1)
 
-st.divider()
+
 
 #chart_data = pd.DataFrame(df1, columns = ['fecha','Precio Cierre'])
     
@@ -94,10 +94,10 @@ df2 = df1.melt(id_vars=['Nemotecnico','fecha'],
 Activo = st.sidebar.multiselect(
         "Seleccione el Activo:",
         options = df['Indicador'].unique(),
-        default = "USD/COP" #Aqui podría por default dejar un filtro especifico pero vamos a dejarlos todos puestos por default
+        #default = "USD/COP" #Aqui podría por default dejar un filtro especifico pero vamos a dejarlos todos puestos por default
     )
     
-df_seleccion = df.query("Indicador == @Indicador. " ) #el primero es la columna y el segundo es el selector
+df_seleccion = df2.query("Indicador == @Activo" ) #el primero es la columna y el segundo es el selector
 st.dataframe(df_seleccion)
 
 #st.write(df2)

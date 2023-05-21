@@ -115,4 +115,4 @@ fig1.update_xaxes(
         )
 )
 
-st.write(fig5)
+st.write(fig1)

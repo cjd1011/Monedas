@@ -91,10 +91,10 @@ df2 = df1.melt(id_vars=['Nemotecnico','fecha'],
 
 #fig5 = px.line( x ='fecha', y = 'Precio Cierre', data_frame = df2, title = 'Linea de tendencia', color = 'Nemotecnico',markers = False)
 
-Activo = st.sidebar.multiselect(
+Activo = st.multiselect(
         "Seleccione el Activo:",
         options = df2['Indicador'].unique(),
-        #default = "USD/COP" #Aqui podría por default dejar un filtro especifico pero vamos a dejarlos todos puestos por default
+        default = "Precio Cierre" #Aqui podría por default dejar un filtro especifico pero vamos a dejarlos todos puestos por default
     )
     
 df_seleccion = df2.query("Indicador == @Activo" ) #el primero es la columna y el segundo es el selector

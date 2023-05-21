@@ -78,7 +78,7 @@ st.dataframe(df1)
 import streamlit as st
 
 
-binary_contents = df1
+binary_contents = st.dataframe(df1)
 # Defaults to 'application/octet-stream'
 st.download_button('Download database', binary_contents)
 

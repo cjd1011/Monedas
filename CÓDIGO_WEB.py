@@ -83,9 +83,11 @@ st.divider()
     
 #st.write(line_chart)
 
-df2 = df1.groupby(['Nemotecnico','fecha'], as_index = False, dropna = False)[['Precio Cierre','RSI','EMA14','EMA50','EMA200']].sum()
+df1.melt(id_vars=['Nemotecnico','fecha'], 
+        var_name="Indicador", 
+        value_name="valor")
 
 #fig5 = px.line( x ='fecha', y = 'Precio Cierre', data_frame = df2, title = 'Linea de tendencia', color = 'Nemotecnico',markers = False)
 
 
-st.write(df2)
+st.write(df1)

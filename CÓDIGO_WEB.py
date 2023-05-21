@@ -55,9 +55,9 @@ df['EMA200'] = df['Precio Cierre'].ewm(span = 200,adjust = False).mean()
 
 elegir_columnas = ['Nemotecnico','fecha','Precio Cierre','RSI','EMA14','EMA50','EMA200']
 
-df1 = df[elegir_columnas]
+df1 = df[elegir_columnas].sort_values(by=['fecha'], ascending=False)
 
-df1.sort_values(by=['fecha'], ascending=True)
+#df1.sort_values(by=['fecha'], ascending=True)
 
 #df['Cap. Bursatil'] = df['Precio Cierre']*df['No. Acciones']
 
@@ -73,7 +73,7 @@ st.subheader('Realizado por: Camilo Diaz:briefcase:')
 
 #st.slider("This is a slider", df['fecha'])
 
-st.dataframe(df1, by = 'fecha', ascending = False)
+st.dataframe(df1)
 
 
 

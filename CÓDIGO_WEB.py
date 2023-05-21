@@ -55,7 +55,7 @@ df['EMA200'] = df['Precio Cierre'].ewm(span = 200,adjust = False).mean()
 
 elegir_columnas = ['Nemotecnico','fecha','Precio Cierre','RSI','EMA14','EMA50','EMA200']
 
-df1 = df[elegir_columnas].sort_values(by=['fecha'], ascending=False)
+df1 = df[elegir_columnas]#.sort_values(by=['fecha'], ascending=False)
 
 #df1.sort_values(by=['fecha'], ascending=True)
 

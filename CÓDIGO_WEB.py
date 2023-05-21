@@ -75,6 +75,20 @@ st.subheader('Realizado por: Camilo Diaz:briefcase:')
 
 st.dataframe(df1)
 
+@st.cache
+def convert_df(df1):
+    # IMPORTANT: Cache the conversion to prevent computation on every rerun
+    return df1.to_csv().encode('utf-8')
+
+csv = convert_df(df1)
+
+st.download_button(
+    label="Download data as CSV",
+    data=csv,
+    file_name='usdcop_df.csv',
+    mime='text/csv',
+)
+
 #chart_data = pd.DataFrame(df1, columns = ['fecha','Precio Cierre'])
     
 #st.line_chart(chart_data,x= 'fecha', y = 'Precio Cierre')

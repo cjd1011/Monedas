@@ -73,7 +73,7 @@ st.subheader('Realizado por: Camilo Diaz:briefcase:')
 
 #st.slider("This is a slider", df['fecha'])
 
-#st.dataframe(df1)
+st.dataframe(df1)
 
 #edited_df = st.experimental_data_editor(df1, num_rows="dynamic") POR SI QUISIERAMOS AGREGAR DATA MANUAL***
 

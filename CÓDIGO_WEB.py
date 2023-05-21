@@ -102,8 +102,6 @@ df_seleccion = df2.query("Indicador == @Activo" ) #el primero es la columna y el
 
 fig1 = px.line( x='fecha', y='valor', title='Gráfica USD/COP', data_frame = df_seleccion, color = 'Indicador')
 
-st.line_chart(data=df_seleccion, *, x='fecha', y='valor', use_container_width=True)
-
 st.write(fig1,use_container_width = True)
 
 st.line_chart(data=df_seleccion,  x='fecha', y='valor', use_container_width=True)

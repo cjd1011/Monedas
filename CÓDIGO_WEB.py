@@ -106,4 +106,4 @@ st.line_chart(data=df_seleccion, *, x='fecha', y='valor', use_container_width=Tr
 
 st.write(fig1,use_container_width = True)
 
-st.line_chart(data=df_seleccion, *, x='fecha', y='valor', use_container_width=True)
+st.line_chart(data=df_seleccion,  x='fecha', y='valor', use_container_width=True)

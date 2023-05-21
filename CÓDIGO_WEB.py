@@ -83,18 +83,9 @@ st.divider()
     
 #st.write(line_chart)
 
-fig5 = px.line( x ='fecha', y = 'Precio Cierre', data_frame = df1, title = 'Linea de tendencia', markers = False)
+df2 = df1.groupby(['Nemotecnico','fecha'], as_index = False, dropna = False)[['Precio Cierre','RSI','EMA14','EMA50','EMA200']].sum()
 
-fig5.update_xaxes(
-        rangeslider_visible=True,
-        rangeselector=dict(
-            buttons=list([
-                dict(count=1, label="1m", step="month", stepmode="backward"),
-                dict(count=6, label="6m", step="month", stepmode="backward"),
-                dict(count=1, label="YTD", step="year", stepmode="todate"),
-                dict(count=1, label="1y", step="year", stepmode="backward"),
-                dict(step="all")
-            ])
-        )
-)
-st.write(fig5)
+#fig5 = px.line( x ='fecha', y = 'Precio Cierre', data_frame = df2, title = 'Linea de tendencia', color = 'Nemotecnico',markers = False)
+
+
+st.write(df2)

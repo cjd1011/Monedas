@@ -73,7 +73,7 @@ st.subheader('Realizado por: Camilo Diaz:briefcase:')
 
 #st.slider("This is a slider", df['fecha'])
 
-st.dataframe(df1)
+st.dataframe(df1, by = 'fecha', ascending = False)
 
 
 

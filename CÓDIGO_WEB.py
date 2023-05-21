@@ -75,14 +75,6 @@ st.subheader('Realizado por: Camilo Diaz:briefcase:')
 
 st.dataframe(df1)
 
-import streamlit as st
-
-
-binary_contents = st.dataframe(df1)
-# Defaults to 'application/octet-stream'
-st.download_button('Download database', binary_contents)
-
-
 #chart_data = pd.DataFrame(df1, columns = ['fecha','Precio Cierre'])
     
 #st.line_chart(chart_data,x= 'fecha', y = 'Precio Cierre')

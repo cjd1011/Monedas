@@ -57,7 +57,7 @@ elegir_columnas = ['Nemotecnico','fecha','Precio Cierre','RSI','EMA14','EMA50','
 
 df1 = df[elegir_columnas]
 
-df1.sort_values(by=['fecha'], ascending=False)
+df1.sort_values(by=['fecha'], ascending=True)
 
 #df['Cap. Bursatil'] = df['Precio Cierre']*df['No. Acciones']
 

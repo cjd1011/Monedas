@@ -75,6 +75,12 @@ st.subheader('Realizado por: Camilo Diaz:briefcase:')
 
 st.dataframe(df1)
 
+import streamlit as st
+
+
+binary_contents = df1
+# Defaults to 'application/octet-stream'
+st.download_button('Download database', binary_contents)
 
 
 #chart_data = pd.DataFrame(df1, columns = ['fecha','Precio Cierre'])
@@ -103,5 +109,7 @@ df_seleccion = df2.query("Indicador == @Activo" ) #el primero es la columna y el
 fig1 = px.line( x='fecha', y='valor', title='Gráfica USD/COP', data_frame = df_seleccion, color = 'Indicador')
 
 st.write(fig1,use_container_width = True)
+
+
 
 

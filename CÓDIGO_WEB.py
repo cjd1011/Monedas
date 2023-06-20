@@ -121,7 +121,7 @@ st.write(fig1,use_container_width = True)
 
 st.subheader('Precios de Compra y Venta en Casas de Cambio en Medellin:')
 
-casas = pd.read_excel('Casas de cambio.xlsx', sheet_name = "Todas", usecols = "B:G",index = False)
+casas = pd.read_excel("Casas de cambio.xlsx", sheet_name = "Todas", usecols = "B:G",index = False)
 
 ordenar_casas = ['Moneda Nueva','Compra','Venta','Empresa','Telefono','Direccion']
 

@@ -129,7 +129,7 @@ casas1 = casas[ordenar_casas].sort_values(by=['Venta'], ascending=True)
 
 casas1.rename({'Moneda Nueva':'Moneda'}, inplace = True , axis = 1)
 
-casas1['Telefono'] = casas1['Telefono'].astype(str)
+#casas1['Telefono'] = casas1['Telefono'].astype(str)
 
 Activo_casa = st.multiselect(
         "Seleccione la moneda:",

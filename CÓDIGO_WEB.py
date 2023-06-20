@@ -125,19 +125,19 @@ casas = pd.read_excel("Casas de cambio.xlsx")#, sheet_name = "Todas", usecols = 
 
 ordenar_casas = ['Moneda Nueva','Compra','Venta','Empresa','Telefono','Direccion']
 
-#casas1 = casas[ordenar_casas].sort_values(by=['Venta'], ascending=True)
+casas = casas[ordenar_casas].sort_values(by=['Venta'], ascending=True)
 
-casas1.rename({'Moneda Nueva':'Moneda'}, inplace = True , axis = 1)
+casas.rename({'Moneda Nueva':'Moneda'}, inplace = True , axis = 1)
 
-#casas1['Telefono'] = casas1['Telefono'].astype(str)
+casas['Telefono'] = casas['Telefono'].astype(str)
 
 Activo_casa = st.multiselect(
         "Seleccione la moneda:",
-        options = casas1['Moneda'].unique(),
+        options = casas['Moneda'].unique(),
         default = "Dólar Estadounidense" #Aqui podría por default dejar un filtro especifico pero vamos a dejarlos todos puestos por default
     )
 
-Activo_casa_seleccion = casas1.query("Moneda == @Activo_casa" )
+Activo_casa_seleccion = casas.query("Moneda == @Activo_casa" )
 
 st.dataframe(Activo_casa_seleccion)
 

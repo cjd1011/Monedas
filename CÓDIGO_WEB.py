@@ -123,7 +123,7 @@ st.subheader('Precios de Compra y Venta en Casas de Cambio en MEDELLIN:')
 
 casas = pd.read_excel("Casas de cambio.xlsx")#, sheet_name = "Todas", usecols = "B:G",index = False)
 
-st.writre(casas)
+st.dataframe(casas)
 
 #ordenar_casas = ['Moneda Nueva','Compra','Venta','Empresa','Telefono','Direccion']
 

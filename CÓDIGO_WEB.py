@@ -123,23 +123,25 @@ st.subheader('Precios de Compra y Venta en Casas de Cambio en MEDELLIN:')
 
 casas = pd.read_excel("Casas de cambio.xlsx")#, sheet_name = "Todas", usecols = "B:G",index = False)
 
-ordenar_casas = ['Moneda Nueva','Compra','Venta','Empresa','Telefono','Direccion']
+st.writre(casas)
 
-casas = casas[ordenar_casas].sort_values(by=['Venta'], ascending=True)
+#ordenar_casas = ['Moneda Nueva','Compra','Venta','Empresa','Telefono','Direccion']
 
-casas.rename({'Moneda Nueva':'Moneda'}, inplace = True , axis = 1)
+#casas = casas[ordenar_casas].sort_values(by=['Venta'], ascending=True)
 
-casas['Telefono'] = casas['Telefono'].astype(str)
+#casas.rename({'Moneda Nueva':'Moneda'}, inplace = True , axis = 1)
 
-Activo_casa = st.multiselect(
-        "Seleccione la moneda:",
-        options = casas['Moneda'].unique(),
-        default = "Dólar Estadounidense" #Aqui podría por default dejar un filtro especifico pero vamos a dejarlos todos puestos por default
-    )
+#casas['Telefono'] = casas['Telefono'].astype(str)
 
-Activo_casa_seleccion = casas.query("Moneda == @Activo_casa" )
+#Activo_casa = st.multiselect(
+#        "Seleccione la moneda:",
+#        options = casas['Moneda'].unique(),
+#        default = "Dólar Estadounidense" #Aqui podría por default dejar un filtro especifico pero vamos a dejarlos todos puestos por default
+ #   )
 
-st.dataframe(Activo_casa_seleccion)
+#Activo_casa_seleccion = casas.query("Moneda == @Activo_casa" )
+
+#st.dataframe(Activo_casa_seleccion)
 
 
 

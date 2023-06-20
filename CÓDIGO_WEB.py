@@ -125,7 +125,7 @@ casas = pd.read_excel("Casas de cambio.xlsx")#, sheet_name = "Todas", usecols = 
 
 ordenar_casas = ['Moneda Nueva','Compra','Venta','Empresa','Telefono','Direccion']
 
-casas1 = casas[ordenar_casas].sort_values(by=['Venta'], ascending=True)
+#casas1 = casas[ordenar_casas].sort_values(by=['Venta'], ascending=True)
 
 casas1.rename({'Moneda Nueva':'Moneda'}, inplace = True , axis = 1)
 

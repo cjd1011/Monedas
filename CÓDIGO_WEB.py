@@ -119,5 +119,31 @@ fig1 = px.line( x='fecha', y='valor', title='Gráfica USD/COP', data_frame = df_
 st.write(fig1,use_container_width = True)
 
 
+st.subheader('Precios de Compra y Venta en Casas de Cambio en Medellin:')
+
+casas = pd.read_excel('Casas de cambio.xlsx', sheet_name = "Todas", usecols = "B:G",index = False)
+
+ordenar_casas = ['Moneda Nueva','Compra','Venta','Empresa','Telefono','Direccion']
+
+casas1 = casas[ordenar_casas].sort_values(by=['Venta'], ascending=True)
+
+casas1.rename({'Moneda Nueva':'Moneda'}, inplace = True , axis = 1)
+
+
+
+Activo_casa = st.multiselect(
+        "Seleccione la moneda:",
+        options = casas1['Moneda'].unique(),
+        default = "Dólar Estadounidense" #Aqui podría por default dejar un filtro especifico pero vamos a dejarlos todos puestos por default
+    )
+
+Activo_casa_seleccion = casas1.query("Moneda == @Activo_casa" )
+
+st.dataframe(Activo_casa_seleccion)
+
+
+
+
+
 
 

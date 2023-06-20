@@ -119,11 +119,13 @@ fig1 = px.line( x='fecha', y='valor', title='Gráfica USD/COP', data_frame = df_
 st.write(fig1,use_container_width = True)
 
 
-st.subheader('Precios de Compra y Venta en Casas de Cambio en Medellin:')
+st.subheader('Precios de Compra y Venta en Casas de Cambio en MEDELLIN:')
 
-casas = pd.read_excel("Casas de cambio.xlsx", sheet_name = "Todas")
+casas = pd.read_excel("Casas de cambio.xlsx")#, sheet_name = "Todas", usecols = "B:G",index = False)
 
 ordenar_casas = ['Moneda Nueva','Compra','Venta','Empresa','Telefono','Direccion']
+
+casas1['Telefono'] = casas1['Telefono'].astype(str)
 
 casas1 = casas[ordenar_casas].sort_values(by=['Venta'], ascending=True)
 

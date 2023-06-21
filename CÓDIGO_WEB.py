@@ -144,6 +144,17 @@ Activo_casa_seleccion = casas.query("Moneda == @Activo_casa" )
 st.dataframe(Activo_casa_seleccion)
 
 
+st.subheader('Convertidor de tasas:')
+
+
+
+number = st.number_input('Cuanto dinero quiero cambiar en pesos Colombianos?')
+st.write('El dinero que quiero cambiar en pesos Colombianos es: ', number)
+
+
+
+
+
 
 
 

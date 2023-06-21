@@ -141,7 +141,7 @@ Activo_casa = st.multiselect(
 
 Activo_casa_seleccion = casas.query("Moneda == @Activo_casa" )
 
-st.dataframe(Activo_casa_seleccion)
+st.dataframe(Activo_casa_seleccion, hide_index=True)
 
 
 #st.subheader('Convertidor de tasas:')

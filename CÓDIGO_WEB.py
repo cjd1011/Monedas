@@ -22,7 +22,29 @@ n = 14
 
 Activo = "USD-COP"
 
-df = pd.read_excel("USD-COP.xlsx")
+Base_histórica = pd.read_excel("USD-COP.xlsx")
+
+Base_histórica['Var'] = Base_histórica["Precio Cierre"].diff()
+
+ordenar_df = ['fecha','Precio Cierre']
+
+Base_histórica1 = Base_histórica[ordenar_df]
+
+datosgov = pd.read_csv('https://www.datos.gov.co/api/views/dit9-nnvp/rows.csv?accessType=DOWNLOAD&bom=true&format=true.csv')
+
+datosgov.to_excel('datosgov.xlsx',index= False)
+
+datosgov['FECHA'] = pd.to_datetime(datosgov['FECHA'], format='%d/%m/%Y') #ordenar formato
+
+datosgov.rename({'TRM':'Precio Cierre','FECHA':'fecha'}, axis=1,inplace=True) #cambios los nombres de las columnas
+
+concatenacion = pd.concat([Base_histórica1,datosgov], ignore_index=True) #El ignore_index me sirve para que se resetee el index y no se me dañe desde el iloc
+
+concatenacion['Nemotecnico'] = "USD/COP"
+
+ordenar_concatenacion = ['Nemotecnico','fecha','Precio Cierre']
+
+df = concatenacion[ordenar_concatenacion]
 
 df['Var'] = df["Precio Cierre"].diff()
 
@@ -73,7 +95,7 @@ st.subheader('Realizado por: Camilo Diaz:briefcase:')
 
 #st.slider("This is a slider", df['fecha'])
 
-st.dataframe(df1,hide_index=True)
+st.dataframe(df1)#,hide_index=True)
 
 #edited_df = st.experimental_data_editor(df1, num_rows="dynamic") POR SI QUISIERAMOS AGREGAR DATA MANUAL***
 
@@ -141,7 +163,7 @@ Activo_casa = st.multiselect(
 
 Activo_casa_seleccion = casas.query("Moneda == @Activo_casa" )
 
-st.dataframe(Activo_casa_seleccion, hide_index=True)
+st.dataframe(Activo_casa_seleccion)#, hide_index=True)
 
 
 #st.subheader('Convertidor de tasas:')
@@ -150,17 +172,3 @@ st.dataframe(Activo_casa_seleccion, hide_index=True)
 
 #number = st.number_input('Cuanto dinero quiero cambiar en pesos Colombianos?:')
 #st.write('El dinero que quiero cambiar en pesos Colombianos es: ', number)
-
-
-
-
-
-
-
-
-
-
-
-
-
-

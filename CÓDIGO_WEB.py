@@ -95,7 +95,7 @@ st.subheader('Realizado por: Camilo Diaz:briefcase:')
 
 #st.slider("This is a slider", df['fecha'])
 
-st.dataframe(df1)#,hide_index=True)
+st.dataframe(df1,hide_index=True)
 
 #edited_df = st.experimental_data_editor(df1, num_rows="dynamic") POR SI QUISIERAMOS AGREGAR DATA MANUAL***
 
@@ -163,7 +163,7 @@ Activo_casa = st.multiselect(
 
 Activo_casa_seleccion = casas.query("Moneda == @Activo_casa" )
 
-st.dataframe(Activo_casa_seleccion)#, hide_index=True)
+st.dataframe(Activo_casa_seleccion, hide_index=True)
 
 
 #st.subheader('Convertidor de tasas:')

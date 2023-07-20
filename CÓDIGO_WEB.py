@@ -141,29 +141,29 @@ fig1 = px.line( x='fecha', y='valor', title='Gráfica USD/COP', data_frame = df_
 st.write(fig1,use_container_width = True)
 
 
-st.subheader('Precios de Compra y Venta en Casas de Cambio en MEDELLIN:')
+#st.subheader('Precios de Compra y Venta en Casas de Cambio en MEDELLIN:')
 
-casas = pd.read_excel("Casas de cambio.xlsx", sheet_name = "Todas")#, usecols = "B:G",index = False)
+#casas = pd.read_excel("Casas de cambio.xlsx", sheet_name = "Todas")#, usecols = "B:G",index = False)
 
 #st.dataframe(casas)
 
-ordenar_casas = ['Moneda Nueva','Compra','Venta','Empresa','Telefono','Direccion']
+#ordenar_casas = ['Moneda Nueva','Compra','Venta','Empresa','Telefono','Direccion']
 
-casas = casas[ordenar_casas].sort_values(by=['Venta'], ascending=True)
+#casas = casas[ordenar_casas].sort_values(by=['Venta'], ascending=True)
 
-casas.rename({'Moneda Nueva':'Moneda'}, inplace = True , axis = 1)
+#casas.rename({'Moneda Nueva':'Moneda'}, inplace = True , axis = 1)
 
-casas['Telefono'] = casas['Telefono'].astype(str)
+#casas['Telefono'] = casas['Telefono'].astype(str)
 
-Activo_casa = st.multiselect(
-        "Seleccione la moneda:",
-        options = casas['Moneda'].unique(),
-        default = "Dólar Estadounidense" #Aqui podría por default dejar un filtro especifico pero vamos a dejarlos todos puestos por default
-    )
+#Activo_casa = st.multiselect(
+#        "Seleccione la moneda:",
+#        options = casas['Moneda'].unique(),
+#        default = "Dólar Estadounidense" #Aqui podría por default dejar un filtro especifico pero vamos a dejarlos todos puestos por default
+#    )
 
-Activo_casa_seleccion = casas.query("Moneda == @Activo_casa" )
+#Activo_casa_seleccion = casas.query("Moneda == @Activo_casa" )
 
-st.dataframe(Activo_casa_seleccion, hide_index=True)
+#st.dataframe(Activo_casa_seleccion, hide_index=True)
 
 
 #st.subheader('Convertidor de tasas:')

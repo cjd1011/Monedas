@@ -7,7 +7,7 @@ pip.main(["install", "openpyxl"])# esta linea y la de arriba me ayudaron a poder
 
 pip.main(["install", "plotly"])
 #import plotly.express as px #pip install plotly-express
-
+import openpyxl
 import datetime
 
 import pickle

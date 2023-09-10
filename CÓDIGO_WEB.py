@@ -22,13 +22,13 @@ n = 14
 
 Activo = "USD-COP"
 
-Base_histórica = pd.read_excel("USD-COP.xlsx")
+Base_Historica = pd.read_excel("USD-COP.xlsx")
 
-Base_histórica['Var'] = Base_histórica["Precio Cierre"].diff()
+Base_Historica['Var'] = Base_Historica["Precio Cierre"].diff()
 
 ordenar_df = ['fecha','Precio Cierre']
 
-Base_histórica1 = Base_histórica[ordenar_df]
+Base_Historica1 = Base_Historica[ordenar_df]
 
 datosgov = pd.read_csv('https://www.datos.gov.co/api/views/dit9-nnvp/rows.csv?accessType=DOWNLOAD&bom=true&format=true.csv')
 
@@ -38,7 +38,7 @@ datosgov['FECHA'] = pd.to_datetime(datosgov['FECHA'], format='%d/%m/%Y') #ordena
 
 datosgov.rename({'TRM':'Precio Cierre','FECHA':'fecha'}, axis=1,inplace=True) #cambios los nombres de las columnas
 
-concatenacion = pd.concat([Base_histórica1,datosgov], ignore_index=True) #El ignore_index me sirve para que se resetee el index y no se me dañe desde el iloc
+concatenacion = pd.concat([Base_Historica1,datosgov], ignore_index=True) #El ignore_index me sirve para que se resetee el index y no se me dañe desde el iloc
 
 concatenacion['Nemotecnico'] = "USD/COP"
 
@@ -172,3 +172,4 @@ st.write(fig1,use_container_width = True)
 
 #number = st.number_input('Cuanto dinero quiero cambiar en pesos Colombianos?:')
 #st.write('El dinero que quiero cambiar en pesos Colombianos es: ', number)
+

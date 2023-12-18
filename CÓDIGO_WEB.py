@@ -3,19 +3,6 @@ import pandas as pd
 import altair as alt
 from openpyxl import Workbook
 import pip
-#pip.main(["install", "openpyxl"])# esta linea y la de arriba me ayudaron a poder ejecutarlo en streamlit, casi que no!
-
-pip.main(["install", "plotly"])
-#import plotly.express as px #pip install plotly-express
-#import openpyxl
-import datetime
-
-import pickle
-from pathlib import Path
-
-import altair as alt
-#import plotly.graph_objects as go
-#import streamlit_authenticator as stauth
 
 
 n = 14

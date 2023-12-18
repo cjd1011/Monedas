@@ -4,7 +4,7 @@ import altair as alt
 from openpyxl import Workbook
 import pip
 import datetime
-
+import plotly.express as px
 import pickle
 from pathlib import Path
 

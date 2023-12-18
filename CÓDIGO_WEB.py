@@ -1,9 +1,9 @@
 import streamlit as st
 import pandas as pd
 import altair as alt
-#from openpyxl import Workbook
+from openpyxl import Workbook
 import pip
-pip.main(["install", "openpyxl"])# esta linea y la de arriba me ayudaron a poder ejecutarlo en streamlit, casi que no!
+#pip.main(["install", "openpyxl"])# esta linea y la de arriba me ayudaron a poder ejecutarlo en streamlit, casi que no!
 
 pip.main(["install", "plotly"])
 #import plotly.express as px #pip install plotly-express

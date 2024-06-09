@@ -103,37 +103,15 @@ df_filtrado = df1[mask]
 with izquierda:
     precio_minimo = df_filtrado['Precio Cierre'].min()  # precio minimo del usd/cop
     st.metric("Valor Mínimo", precio_minimo)  # Graficarlo
-    
-    # Calcular la variación porcentual de 30 días
-    variacion_30d = ((df_filtrado['Precio Cierre'].iloc[0] - df_filtrado['Precio Cierre'].iloc[29]) / df_filtrado['Precio Cierre'].iloc[29])*100
-    st.metric("Variación 30 días", f"{variacion_30d:.2f}%")
-    
-    variacion_60d = ((df_filtrado['Precio Cierre'].iloc[0] - df_filtrado['Precio Cierre'].iloc[59]) / df_filtrado['Precio Cierre'].iloc[59])*100
-    st.metric("Variación 60 días", f"{variacion_60d:.2f}%")
 
 with centro:
     precio_promedio = df_filtrado['Precio Cierre'].mean()
     precio_promedio_r = round(precio_promedio, 2)  # solo dos decimales...
     st.metric("Valor Promedio", precio_promedio_r)
-    
-    # Calcular la variación porcentual de 90 días
-    variacion_90d = ((df_filtrado['Precio Cierre'].iloc[0] - df_filtrado['Precio Cierre'].iloc[89]) / df_filtrado['Precio Cierre'].iloc[89]) * 100
-    st.metric("Variación 90 días", f"{variacion_90d:.2f}%")
-    
-    variacion_120d = ((df_filtrado['Precio Cierre'].iloc[0] - df_filtrado['Precio Cierre'].iloc[119]) / df_filtrado['Precio Cierre'].iloc[119]) * 100
-    st.metric("Variación 120 días", f"{variacion_120d:.2f}%")
 
 with derecha:
     precio_maximo = df_filtrado['Precio Cierre'].max()
     st.metric("Valor Máximo", precio_maximo)  # Graficarlo
-    
-    # Calcular la variación porcentual de 180 días
-    variacion_180d = ((df_filtrado['Precio Cierre'].iloc[0] - df_filtrado['Precio Cierre'].iloc[179]) / df_filtrado['Precio Cierre'].iloc[179]) * 100
-    st.metric("Variación 180 días", f"{variacion_180d:.2f}%")
-
-    # Calcular la variación porcentual de 360 días
-    variacion_360d = ((df_filtrado['Precio Cierre'].iloc[0] - df_filtrado['Precio Cierre'].iloc[359]) / df_filtrado['Precio Cierre'].iloc[359]) * 100
-    st.metric("Variación 360 días", f"{variacion_360d:.2f}%")
 
 # Remover las columnas 'Mes' y 'Año' antes de mostrar el DataFrame
 df_filtrado = df_filtrado.drop(columns=['Mes', 'Año'])

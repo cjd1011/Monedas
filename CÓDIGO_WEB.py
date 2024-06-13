@@ -149,17 +149,22 @@ fig1 = px.line(x='fecha', y='valor', title='Gráfica USD/COP', data_frame=df_sel
 st.write(fig1, use_container_width=True)
 
 
-#Aqui empezamos a modelar interactivamente para que las personas puedan convertir sus pesos a dòlares
-#number = st.number_input('Cuanto dinero quiero cambiar en pesos Colombianos?:')
-#st.write('El dinero que quiero cambiar en pesos Colombianos es: ', number)
+# Sección interactiva para la conversión de divisas
+st.subheader('Convertidor de divisas:')
 
-precio_dolar_reciente = df1['Precio Cierre'].iloc[0]
+conversion_type = st.radio(
+    "Selecciona el tipo de conversión:",
+    ('De Pesos Colombianos a Dólares', 'De Dólares a Pesos Colombianos')
+)
 
-cantidad_pesos = st.number_input('Ingrese la cantidad en pesos colombianos que desea convertir a dólares:', min_value=0.0, format='%f')
-if cantidad_pesos > 0:
-    cantidad_dolares = cantidad_pesos / precio_dolar_reciente
-    st.write(f'La cantidad en dólares es: ${cantidad_dolares:.2f}')
+latest_price = df1['Precio Cierre'].iloc[0]
+
+if conversion_type == 'De Pesos Colombianos a Dólares':
+    amount = st.number_input('Ingrese la cantidad en Pesos Colombianos:')
+    converted_amount = amount / latest_price
+    st.write(f'El monto en dólares es: {converted_amount:,.2f} USD')
 else:
-    st.write('Ingrese una cantidad válida en pesos colombianos.')
-
+    amount = st.number_input('Ingrese la cantidad en Dólares:')
+    converted_amount = amount * latest_price
+    st.write(f'El monto en Pesos Colombianos es: {converted_amount:,.2f} COP')
 

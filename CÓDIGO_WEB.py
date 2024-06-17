@@ -102,16 +102,16 @@ df_filtrado = df1[mask]
 
 with izquierda:
     precio_minimo = df_filtrado['Precio Cierre'].min()  # precio minimo del usd/cop
-    st.metric("Valor Mínimo", precio_minimo)  # Graficarlo
+    st.metric("Valor Mínimo Histórico", precio_minimo)  # Graficarlo
 
 with centro:
     precio_promedio = df_filtrado['Precio Cierre'].mean()
     precio_promedio_r = round(precio_promedio, 2)  # solo dos decimales...
-    st.metric("Valor Promedio", precio_promedio_r)
+    st.metric("Valor Promedio Histórico", precio_promedio_r)
 
 with derecha:
     precio_maximo = df_filtrado['Precio Cierre'].max()
-    st.metric("Valor Máximo", precio_maximo)  # Graficarlo
+    st.metric("Valor Máximo Histórico", precio_maximo)  # Graficarlo
 
 # Remover las columnas 'Mes' y 'Año' antes de mostrar el DataFrame
 df_filtrado = df_filtrado.drop(columns=['Mes', 'Año'])

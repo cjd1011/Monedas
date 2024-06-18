@@ -139,7 +139,7 @@ df2 = df_filtrado.melt(id_vars=['Nemotecnico', 'fecha'],
 Activo = st.multiselect(
     "Seleccione el Activo:",
     options=df2['Indicador'].unique(),
-    default="Precio Cierre"  # Aqui podría por default dejar un filtro especifico pero vamos a dejarlos todos puestos por default
+    default=["Precio Cierre", "EMA14", "EMA50", "EMA200"]  # Por default, seleccionamos todas las medias móviles y el precio
 )
 
 df_seleccion = df2.query("Indicador == @Activo")  # el primero es la columna y el segundo es el selector
@@ -148,6 +148,12 @@ fig1 = px.line(x='fecha', y='valor', title='Gráfica USD/COP', data_frame=df_sel
 
 st.write(fig1, use_container_width=True)
 
+# Gráfico de RSI separado
+df_rsi = df_filtrado[['fecha', 'RSI']]
+
+fig2 = px.line(df_rsi, x='fecha', y='RSI', title='RSI')
+
+st.write(fig2, use_container_width=True)
 
 # Sección interactiva para la conversión de divisas
 st.subheader('Convertidor de divisas:')

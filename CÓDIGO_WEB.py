@@ -6,8 +6,10 @@ from openpyxl import Workbook
 import pip
 import datetime
 import plotly.express as px
+import matplotlib.pyplot as plt
 import pickle
 from pathlib import Path
+import plotly.graph_objs as go
 
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -70,6 +72,62 @@ df['SMA200'] = df['Precio Cierre'].rolling(200).mean()
 df['EMA14'] = df['Precio Cierre'].ewm(span=14, adjust=False).mean()
 df['EMA50'] = df['Precio Cierre'].ewm(span=50, adjust=False).mean()
 df['EMA200'] = df['Precio Cierre'].ewm(span=200, adjust=False).mean()
+
+#Vamos a usar los siguientes dos abajo para el MACD
+df['EMA12'] = df['Precio Cierre'].ewm(span=12, adjust=False).mean() ##Para el MACD
+df['EMA26'] = df['Precio Cierre'].ewm(span=26, adjust=False).mean() ##Para el MACD
+
+#Crear la 'Linea MACD'
+
+df['MACD_line'] = df['EMA12'] - df['EMA26']
+
+# Calcular la Signal Line
+df['Signal_Line'] = df['MACD_line'].ewm(span=9, adjust=False).mean()
+
+# Calcular el Histograma
+df['Histograma'] = df['MACD_line'] - df['Signal_Line']
+
+
+# Crear la figura interactiva con Plotly
+fig = go.Figure()
+
+# Agregar la línea MACD
+fig.add_trace(go.Scatter(x=df['fecha'], y=df['MACD_line'], mode='lines', name='MACD Line', line=dict(color='blue')))
+
+# Agregar la Signal Line
+fig.add_trace(go.Scatter(x=df['fecha'], y=df['Signal_Line'], mode='lines', name='Signal Line', line=dict(color='red')))
+
+# Agregar el Histograma como barras
+fig.add_trace(go.Bar(x=df['fecha'], y=df['Histograma'], name='Histograma', marker_color='grey', opacity=0.5))
+
+# Configurar el diseño del gráfico
+
+fig.update_layout(
+    title='MACD con Signal Line y Histograma (USD/COP)',
+    xaxis_title='Fecha',
+    yaxis_title='Valor MACD',
+    showlegend=True,
+    template='plotly_white',
+    height=600,
+    xaxis=dict(
+        rangeslider=dict(visible=True),
+        type='date'  # Asegúrate de que el eje x sea de tipo fecha
+    )
+)
+
+
+fig.add_shape(
+    type="line",
+    x0=df['fecha'].min(),
+    y0=0,
+    x1=df['fecha'].max(),
+    y1=0,
+    line=dict(color="black", width=1)
+)
+
+
+
+
 
 elegir_columnas = ['Nemotecnico', 'fecha', 'Precio Cierre', 'RSI', 'EMA14', 'EMA50', 'EMA200']
 
@@ -149,11 +207,14 @@ fig1 = px.line(x='fecha', y='valor', title='Gráfica USD/COP', data_frame=df_sel
 st.write(fig1, use_container_width=True)
 
 # Gráfico de RSI separado
-df_rsi = df_filtrado[['fecha', 'RSI']]
+#df_rsi = df_filtrado[['fecha', 'RSI']]
 
-fig2 = px.line(df_rsi, x='fecha', y='RSI', title='RSI')
+#fig2 = px.line(df_rsi, x='fecha', y='RSI', title='RSI')
 
-st.write(fig2, use_container_width=True)
+#st.write(fig2, use_container_width=True)
+
+# Mostrar la gráfica del MACD en Streamlit
+st.plotly_chart(fig)
 
 # Sección interactiva para la conversión de divisas
 st.subheader('Convertidor de divisas:')
@@ -173,4 +234,3 @@ else:
     amount = st.number_input('Ingrese la cantidad en Dólares:')
     converted_amount = amount * latest_price
     st.write(f'El monto en Pesos Colombianos es: {converted_amount:,.2f} COP')
-
